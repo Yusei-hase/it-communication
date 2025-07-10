@@ -9,6 +9,7 @@ https://www.kaggle.com/datasets/martj42/international-football-results-from-1872
 ・home_team,away_team,first_shooterの3つ
 ＜推定量＞
 ・winner
+
 ③ニューラルネットワークの構成（ニューロン数，層数など）
 ・ニューロン数・・100,50
 ・層数・・4
