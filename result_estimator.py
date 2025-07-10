@@ -29,20 +29,11 @@ def read_data() -> pd.DataFrame:
     shootouts_data["winner"] = shootouts_data["winner"].map(country_to_id)
     shootouts_data["first_shooter"] = shootouts_data["first_shooter"].map(country_to_id)
 
-
-    #shootouts_data["day"] = shootouts_data["day"].map({"Sun": 0, "Sat": 1, "Thur": 2, "Fri": 3})
     # 国名と対応する数値の一覧を表示
     for country, idx in country_to_id.items():
          print(f"{country}: {idx}")
     
     print(shootouts_data.head())
-
-
-    # 数値の調整
-    #shootouts_data["total_bill"] = shootouts_data["total_bill"] / 10
-
-    # 変換後のデータの確認
-    # print(tips_data.head())
 
     return shootouts_data
 
@@ -51,9 +42,9 @@ def read_data() -> pd.DataFrame:
 def create_dataset_from_dataframe(
     shootouts_data: pd.DataFrame, target_tag: str = "winner"
 ) -> tuple[torch.Tensor, torch.Tensor]:
-    # "tip"の列を目的にする
+    # 列を目的にする
     target = torch.tensor(shootouts_data[target_tag].values, dtype=torch.float32).reshape(-1, 1)
-    # "tip"以外の列を入力にする
+    # 以外の列を入力にする
     input_data = shootouts_data.drop([target_tag, "date"], axis=1)
     #input = torch.tensor(shootouts_data.drop(target_tag, axis=1).values, dtype=torch.float32)
     input = torch.tensor(input_data.values, dtype=torch.float32)
