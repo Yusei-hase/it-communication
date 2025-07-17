@@ -30,12 +30,11 @@ splitFactor - 株式分割
 
 https://www.kaggle.com/datasets/suyashlakhani/apple-stock-prices-20152020?select=AAPL.csv
 
-
 ②何を入力として何を推定するのか。
 
 ＜入力量＞
 
-・close以外の10変量
+・前日のLow,High,volume,当日のopen
 
 ＜推定量＞
 
@@ -45,7 +44,9 @@ https://www.kaggle.com/datasets/suyashlakhani/apple-stock-prices-20152020?select
 
 ・ニューロン数・・10,32,32,1
 
-入力層（特徴量の数である10）→隠れ層1（32）→隠れ層2（32）→出力層（目的変数なので1）
+入力層（特徴量の数である4）→隠れ層1（32）→隠れ層2（32）→出力層（目的変数なので1）
+
+活性化関数（ReLU）
 
 ・層数・・3層の全結合層
 
@@ -55,32 +56,32 @@ https://www.kaggle.com/datasets/suyashlakhani/apple-stock-prices-20152020?select
 
 ＜結果＞
 
-・Epoch 0, Loss: 0.048072
+・Epoch 0, Loss: 0.397222
 
-　Epoch 50, Loss: 0.000437
- 
-　Epoch 100, Loss: 0.000354
- 
-　Epoch 150, Loss: 0.000155
- 
-　Epoch 200, Loss: 0.000050
- 
-　Epoch 250, Loss: 0.000027
- 
-　Epoch 299, Loss: 0.000064
+　Epoch 50, Loss: 0.002327
 
-・予測された終値: 141.39 USD
+　Epoch 100, Loss: 0.001903
 
-・モデル評価: MSE  = 0.0001
- 
-  　　　　　　RMSE = 0.0080
-  
- 　　　　　　 MAE  = 0.0058
-  
- 　　　　　　 R²   = 0.9999
-        
+　Epoch 150, Loss: 0.001566
+
+　Epoch 200, Loss: 0.002312
+
+　Epoch 250, Loss: 0.001493
+
+　Epoch 299, Loss: 0.001468
+
+・予測された終値: 152.73 USD
+
+・モデル評価（テストデータ）: MSE = 6.2661
+
+　　　　　　                RMSE = 2.5032
+
+　　　　　　                MAE = 1.6863
+
+　　　　　　                 R² = 0.9981
+
 ＜考察＞
 
-・MSEとRMSEは低い値となった為、予測精度は良いと考えられる。
+・予測精度が良すぎる（そもそもデータが線形なので、それが原因かも）
 
-・R² ≒ 1.0 に近いので、モデルはかなり精度よく予測していると言える。
+・
