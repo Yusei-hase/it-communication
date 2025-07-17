@@ -78,6 +78,7 @@ https://www.kaggle.com/datasets/suyashlakhani/apple-stock-prices-20152020?select
  　　　　　　 MAE  = 0.0058
   
  　　　　　　 R²   = 0.9999
+        
 ＜考察＞
 
 ・MSEとRMSEは低い値となった為、予測精度は良いと考えられる。
